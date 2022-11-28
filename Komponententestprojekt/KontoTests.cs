@@ -1,6 +1,6 @@
 namespace Banktests { 
     using Bank;
-    
+
 
     [TestClass]
     public class KontoTests
@@ -21,6 +21,22 @@ namespace Banktests {
             //Assert
             Assert.AreEqual(guthaben_soll, k1.Guthaben);
 
+        }
+        [TestMethod]
+        public void Auszahlen_GuthabenVerringern()
+        {
+            //Arrange
+            int startguthaben = 14;
+            int auszahlung = 10;
+            Konto k1 = new Konto(startguthaben);
+            
+            int guthaben_wird = startguthaben - auszahlung;
+
+            //Act
+            k1.Auszahlen(auszahlung);
+
+            //Assert
+            Assert.AreEqual(guthaben_wird, k1.Guthaben);
         }
     }
 }
